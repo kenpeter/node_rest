@@ -22,12 +22,12 @@ exports.create_a_task = function(req, res) {
 	// req.body == name of task, created_date and type like pending,
 	// completed, etc
 	var newTask = new Task(req.body);
-	newTask.save(function(err, task)){
+	newTask.save(function(err, task){
 		if (err)
 			res.send(err);
 
 		res.json(task);
-	};
+	});
 };
 
 
@@ -56,7 +56,7 @@ exports.update_a_task = function(req, res) {
 };
 
 
-export.delete_a_task = function(req, res) {
+exports.delete_a_task = function(req, res) {
 	var taskId = req.params.taskId;
 
 	Task.remove({_id: taskId}, function(err, task){
